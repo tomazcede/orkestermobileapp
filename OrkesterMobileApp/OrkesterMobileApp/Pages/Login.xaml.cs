@@ -1,4 +1,5 @@
 ﻿using Orkesterapp.Classes;
+using OrkesterMobileApp;
 using OrkesterMobileApp.Classes;
 using OrkesterMobileApp.Pages;
 using System;
@@ -26,13 +27,12 @@ namespace Orkesterapp.Pages
         {
             try
             {
-                User user = await apiClient.GetUser(email.Text, pass.Text);
-                Console.WriteLine(user.firstMidName + " " + user.lastName);
+                App.loggedIn = await apiClient.GetUser(email.Text, pass.Text);
 
-                switch (user.roleID)
+                switch (App.loggedIn.roleID)
                 {
                     case 1:
-                        await Navigation.PushAsync(new Member(user));
+                        await Navigation.PushAsync(new Member());
                         break;
                     case 2:
                         await Navigation.PushAsync(new Conductor());
@@ -41,10 +41,13 @@ namespace Orkesterapp.Pages
                         await Navigation.PushAsync(new Admin());
                         break;
                 }
+
+                
                 
             }
             catch (Exception ex)
             {
+                Console.WriteLine("ERROR: " + ex.ToString());
                 await DisplayAlert("Alert", "Email and password do not match", "Ok");
             }
         }

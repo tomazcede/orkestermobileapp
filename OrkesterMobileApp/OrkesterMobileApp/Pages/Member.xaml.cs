@@ -1,4 +1,5 @@
 ﻿using Orkesterapp.Classes;
+using OrkesterMobileApp.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +14,20 @@ namespace OrkesterMobileApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Member : ContentPage
     {
-        public Member(User u)
+        private OrkesterApi api = new OrkesterApi();
+        public Member()
         {
-            welcomelabel.Text = "Welcome " + u.firstMidName;
             InitializeComponent();
+
+            welcomelabel.Text = "Hello " + App.loggedIn.firstMidName + " " + App.loggedIn.lastName;
+            displayPerformances();
         }
 
-        public void displayPerformances(int id)
+        public async void displayPerformances()
         {
+            List<Performance> perfs = await api.GetPerformances(App.loggedIn.orchesterID);
 
+            performanceListView.ItemsSource = perfs;
         }
     }
 }

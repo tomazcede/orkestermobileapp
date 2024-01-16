@@ -1,4 +1,5 @@
-﻿using Orkesterapp.Pages;
+﻿using Orkesterapp.Classes;
+using Orkesterapp.Pages;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,6 +8,7 @@ namespace OrkesterMobileApp
 {
     public partial class App : Application
     {
+        public static User loggedIn;
         public App()
         {
             InitializeComponent();

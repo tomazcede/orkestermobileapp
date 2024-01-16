@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace OrkesterMobileApp.Classes
 {
@@ -30,6 +31,17 @@ namespace OrkesterMobileApp.Classes
             string resonsestring = await response.Content.ReadAsStringAsync();
 
             return JsonSerializer.Deserialize<User>(resonsestring);
+        }
+
+        public async Task<List<Performance>> GetPerformances(int orkesterID)
+        {
+            var response = await _httpclient.GetAsync($"performances?id={orkesterID}");
+
+            response.EnsureSuccessStatusCode();
+
+            string resonsestring = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<List<Performance>>(resonsestring);
         }
     }
 }

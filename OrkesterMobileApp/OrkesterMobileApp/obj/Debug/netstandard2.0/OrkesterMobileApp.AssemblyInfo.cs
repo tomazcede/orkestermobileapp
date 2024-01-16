@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrkesterMobileApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0febd41417b1fe229ce43b08b9d29a90d5af31c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrkesterMobileApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrkesterMobileApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
