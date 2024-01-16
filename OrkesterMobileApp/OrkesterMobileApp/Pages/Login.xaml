@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Orkesterapp.Pages.Login">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome" />
+            <Label Text="Email:" />
+            <Entry x:Name="email" />
+
+            <Label Text="Password:" />
+            <Entry IsPassword="True" x:Name="pass" />
+            
+            <Button Text="Login" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
