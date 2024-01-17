@@ -24,7 +24,15 @@ namespace OrkesterMobileApp.Classes
 
         public async Task<User> GetUser(string email, string pass) 
         {
-            var response = await _httpclient.GetAsync($"user?email={email}&pass={pass}");
+            Dictionary<string, string> data = new Dictionary<string, string>();
+
+            data["Email"] = email;
+            data["Geslo"] = pass;
+
+            string content = JsonSerializer.Serialize(data);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+
+            var response = await _httpclient.PostAsync("user", httpContent);
 
             response.EnsureSuccessStatusCode();
 
@@ -35,7 +43,9 @@ namespace OrkesterMobileApp.Classes
 
         public async Task<List<Performance>> GetPerformances(int orkesterID)
         {
-            var response = await _httpclient.GetAsync($"performances?id={orkesterID}");
+            string content = JsonSerializer.Serialize(orkesterID);
+            var httpContent = new StringContent(content, Encoding.UTF8, "application/json");
+            var response = await _httpclient.PostAsync("performances", httpContent);
 
             response.EnsureSuccessStatusCode();
 
